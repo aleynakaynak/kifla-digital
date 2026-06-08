@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<title>KIFLA – Kahve Kataloğu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bur:#6B1E2A;--gold:#C4A35A;--cream:#F7F2E9;--dark:#2C2C2C}
+body{background:#cac5bc;font-family:'Lato',sans-serif;padding:30px;display:flex;flex-direction:column;align-items:center;gap:20px}
+.btn{background:var(--bur);color:var(--cream);border:none;padding:12px 36px;font-family:'Cormorant Garamond',serif;font-size:14pt;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-bottom:10px}
+.btn:hover{background:#4a1520}
+@media print{
+  body{background:white;padding:0;gap:0}
+  .btn,.noprint{display:none}
+  .page{page-break-after:always;box-shadow:none;margin:0}
+}
+@page{size:210mm 297mm;margin:0}
+
+/* PAGE */
+.page{
+  width:216mm;height:303mm;background:var(--cream);
+  position:relative;overflow:hidden;
+  box-shadow:0 6px 40px rgba(0,0,0,.25);
+  margin-bottom:20px;
+  page-break-after:always;break-after:page;
+}
+/* decorative frame */
+.frame{position:absolute;top:8mm;left:8mm;right:8mm;bottom:8mm;border:.4px solid rgba(196,163,90,.35);pointer-events:none;z-index:0}
+
+/* COVER */
+.cover-inner{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:7mm;padding:20mm;text-align:center;
+}
+.cover-brand{font-family:'Cormorant Garamond',serif;font-size:80pt;font-weight:600;color:var(--bur);letter-spacing:10px;line-height:1}
+.cover-sub{font-family:'Cormorant Garamond',serif;font-size:11pt;color:var(--gold);letter-spacing:4px;text-transform:uppercase}
+.cover-cat{font-family:'Cormorant Garamond',serif;font-size:20pt;color:var(--bur);letter-spacing:5px;text-transform:uppercase;margin-top:5mm}
+.cover-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12pt;color:#8a6040;line-height:1.6}
+.divrow{display:flex;align-items:center;gap:4mm}
+.divrow .l{flex:1;height:.5px;background:var(--gold)}
+.divrow .d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.cover-bottom{position:absolute;bottom:14mm;left:0;right:0;text-align:center;font-size:7pt;color:#b09060;letter-spacing:2px;text-transform:uppercase}
+
+/* INNER */
+.inner{
+  width:100%;height:100%;
+  padding:12mm 13mm 12mm;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+
+/* Section header */
+.sec-head{display:flex;align-items:center;gap:4mm;margin-bottom:5mm;padding-bottom:4mm;border-bottom:1px solid rgba(107,30,42,.18)}
+.sec-head-img{width:22mm;height:15mm;object-fit:cover;border-radius:3px;flex-shrink:0}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:24pt;font-weight:600;color:var(--bur);letter-spacing:2px;line-height:1.1}
+.sec-sub{font-size:7.5pt;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-top:1mm}
+.gold-line{height:.4px;background:var(--gold);margin-bottom:5mm}
+
+/* Product grid */
+.grid{display:grid;gap:4mm;flex:1}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+
+.card{
+  background:white;border-radius:10px;overflow:hidden;
+  border:.4px solid rgba(196,163,90,.3);
+  display:flex;flex-direction:column;
+}
+.card-img{width:100%;height:28mm;object-fit:cover;display:block}
+.card-body{padding:3mm 3.5mm 3.5mm;display:flex;flex-direction:column;flex:1}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:11pt;font-weight:600;color:var(--bur);line-height:1.2}
+.card-note{font-size:7pt;color:#777;margin-top:1mm;line-height:1.5;flex:1}
+.card-allergen{font-size:6pt;color:#bbb;margin-top:1mm}
+.card-price{font-family:'Cormorant Garamond',serif;font-size:11pt;color:var(--gold);font-weight:600;margin-top:2mm;text-align:right}
+.new-badge{display:inline-block;background:var(--bur);color:var(--cream);font-size:5.5pt;padding:1px 4px;border-radius:3px;letter-spacing:1px;text-transform:uppercase;margin-left:3px;vertical-align:middle}
+
+/* page footer */
+.pfoot{position:absolute;bottom:6mm;left:13mm;right:13mm;display:flex;justify-content:space-between;align-items:center}
+.pfoot-brand{font-family:'Cormorant Garamond',serif;font-size:8pt;color:#c0b090;letter-spacing:2px}
+.pfoot-num{font-size:7pt;color:#c0b090;letter-spacing:1px}
+</style>
+</head>
+<body>
+<button class="btn" onclick="window.print()">⬡ Yazdır / PDF Kaydet</button>
+<p class="noprint" style="font-family:Arial,sans-serif;font-size:11px;color:#666;text-align:center;margin-bottom:10px">
+  ⌘P → PDF Olarak Kaydet → Kağıt: A4 → Kenar Boşlukları: Yok → Ölçek: %100
+</p>
+
+<!-- ══ KAPAK ══ -->
+<div class="page">
+  <div class="frame"></div>
+  <div class="cover-inner">
+    <div class="cover-brand">KIFLA</div>
+    <div class="divrow" style="width:90mm"><div class="l"></div><div class="d"></div><div class="l"></div></div>
+    <div class="cover-sub">Artisan Bakery &nbsp;•&nbsp; Coffee &nbsp;•&nbsp; Desserts</div>
+    <div style="width:1px;height:16mm;background:linear-gradient(to bottom,transparent,#C4A35A,transparent)"></div>
+    <div class="cover-cat">Kahve Kataloğu</div>
+    <div class="divrow" style="width:60mm;opacity:.5"><div class="l"></div><div class="d"></div><div class="l"></div></div>
+    <div class="cover-quote">
+      "Özenle seçilmiş çekirdeklerden,<br>ustalıkla hazırlanmış her yudum."
+    </div>
+  </div>
+  <div class="cover-bottom">@thekifla &nbsp;·&nbsp; kifla-digital.vercel.app &nbsp;·&nbsp; 2025</div>
+</div>
+
+<!-- ══ SAYFA 2 — Espresso Bazlı ══ -->
+<div class="page">
+  <div class="inner">
+    <div class="sec-head">
+      <img class="sec-head-img" src="src/assets/kahve.jpg" alt=""/>
+      <div>
+        <div class="sec-title">☕ Sıcak Kahveler</div>
+        <div class="sec-sub">Espresso bazlı · Özenle seçilmiş çekirdekler</div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div class="grid g3">
+      <div class="card">
+        <img class="card-img" src="src/assets/products/espresso.jpg" alt="Espresso"/>
+        <div class="card-body">
+          <div class="card-name">Espresso</div>
+          <div class="card-note">Tek shot, yoğun ve konsantre</div>
+          <div class="card-price">100 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/double-espresso.jpg" alt="Double Espresso"/>
+        <div class="card-body">
+          <div class="card-name">Double Espresso</div>
+          <div class="card-note">İki shot espresso, daha güçlü aroma</div>
+          <div class="card-price">135 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/americano.jpg" alt="Americano"/>
+        <div class="card-body">
+          <div class="card-name">Americano</div>
+          <div class="card-note">Espresso üzerine sıcak su</div>
+          <div class="card-price">125 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/cappuccino.jpg" alt="Cappuccino"/>
+        <div class="card-body">
+          <div class="card-name">Cappuccino</div>
+          <div class="card-note">Espresso, buharlı süt ve yoğun köpük</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">135 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/latte.jpg" alt="Latte"/>
+        <div class="card-body">
+          <div class="card-name">Latte</div>
+          <div class="card-note">Espresso ve bol buharlı süt</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">160 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/flat-white.jpg" alt="Flat White"/>
+        <div class="card-body">
+          <div class="card-name">Flat White</div>
+          <div class="card-note">Yoğun espresso, az köpük, ince süt</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">160 TL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span class="pfoot-brand">KIFLA</span><span class="pfoot-num">2</span></div>
+</div>
+
+<!-- ══ SAYFA 3 — Özel Kahveler ══ -->
+<div class="page">
+  <div class="inner">
+    <div class="sec-head">
+      <img class="sec-head-img" src="src/assets/kahve.jpg" alt=""/>
+      <div>
+        <div class="sec-title">✦ Özel Tarifler</div>
+        <div class="sec-sub">Mocha, Macchiato &amp; Sıcak İçecekler</div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div class="grid g3">
+      <div class="card">
+        <img class="card-img" src="src/assets/products/mocha-real.jpeg" alt="Mocha"/>
+        <div class="card-body">
+          <div class="card-name">Mocha</div>
+          <div class="card-note">Espresso, çikolata sosu, buharlı süt</div>
+          <div class="card-allergen">Süt, kakao</div>
+          <div class="card-price">175 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/white-mocha.jpeg" alt="White Mocha"/>
+        <div class="card-body">
+          <div class="card-name">White Mocha <span class="new-badge">YENİ</span></div>
+          <div class="card-note">Espresso, beyaz çikolata, buharlı süt</div>
+          <div class="card-allergen">Süt, kakao</div>
+          <div class="card-price">185 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/macchiato-real.jpeg" alt="Macchiato"/>
+        <div class="card-body">
+          <div class="card-name">Macchiato</div>
+          <div class="card-note">Espresso üzerine hafif köpük</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">140 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/turk-kahvesi-real.jpeg" alt="Türk Kahvesi"/>
+        <div class="card-body">
+          <div class="card-name">Türk Kahvesi</div>
+          <div class="card-note">Geleneksel bakır cezve ile pişirilir</div>
+          <div class="card-price">80 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/filtre-kahve.webp" alt="Filtre Kahve"/>
+        <div class="card-body">
+          <div class="card-name">Filtre Kahve</div>
+          <div class="card-note">Günlük öğütülen specialty çekirdek</div>
+          <div class="card-price">100 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/sicak-cikolata-real.jpeg" alt="Sıcak Çikolata"/>
+        <div class="card-body">
+          <div class="card-name">Sıcak Çikolata</div>
+          <div class="card-note">Belçika çikolatası ile hazırlanır</div>
+          <div class="card-allergen">Süt, kakao</div>
+          <div class="card-price">140 TL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span class="pfoot-brand">KIFLA</span><span class="pfoot-num">3</span></div>
+</div>
+
+<!-- ══ SAYFA 4 — Soğuk Kahveler ══ -->
+<div class="page">
+  <div class="inner">
+    <div class="sec-head">
+      <img class="sec-head-img" src="src/assets/soguk-kahve.jpg" alt=""/>
+      <div>
+        <div class="sec-title">🧊 Soğuk Kahveler</div>
+        <div class="sec-sub">Serinlik ve karakterin buluştuğu özel tarifler</div>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div class="grid g3">
+      <div class="card">
+        <img class="card-img" src="src/assets/products/iced-americano.webp" alt="Iced Americano"/>
+        <div class="card-body">
+          <div class="card-name">Iced Americano</div>
+          <div class="card-note">Espresso, buz ve soğuk su</div>
+          <div class="card-price">145 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/iced-latte.webp" alt="Iced Latte"/>
+        <div class="card-body">
+          <div class="card-name">Iced Latte</div>
+          <div class="card-note">Espresso, buz, soğuk süt</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">165 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/iced-cappuccino.webp" alt="Iced Cappuccino"/>
+        <div class="card-body">
+          <div class="card-name">Iced Cappuccino</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">165 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/iced-mocha.webp" alt="Iced Mocha"/>
+        <div class="card-body">
+          <div class="card-name">Iced Mocha</div>
+          <div class="card-allergen">Süt, kakao</div>
+          <div class="card-price">185 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/cold-brew.webp" alt="Cold Brew"/>
+        <div class="card-body">
+          <div class="card-name">Cold Brew</div>
+          <div class="card-note">12 saat soğuk demleme, yoğun aroma</div>
+          <div class="card-price">175 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/iced-flat-white.webp" alt="Iced Flat White"/>
+        <div class="card-body">
+          <div class="card-name">Iced Flat White</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">170 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/affogato.webp" alt="Affogato"/>
+        <div class="card-body">
+          <div class="card-name">Affogato</div>
+          <div class="card-note">Espresso ve vanilyalı dondurma</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">175 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/frappe.webp" alt="Frappe"/>
+        <div class="card-body">
+          <div class="card-name">Frappe</div>
+          <div class="card-allergen">Süt</div>
+          <div class="card-price">155 TL</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="src/assets/products/ice-coffee.webp" alt="Ice Coffee"/>
+        <div class="card-body">
+          <div class="card-name">Ice Coffee</div>
+          <div class="card-price">140 TL</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span class="pfoot-brand">KIFLA</span><span class="pfoot-num">4</span></div>
+</div>
+
+</body>
+</html>

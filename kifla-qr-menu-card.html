@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KIFLA – QR Menü Kartı (Baskıya Hazır)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #d0ccc7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    h1.guide {
+      font-family: 'Cormorant Garamond', serif;
+      color: #4a2530;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    p.guide {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       PRINT SETTINGS
+       A6 = 105x148mm | Bleed = 3mm each side → 111x154mm
+    ───────────────────────────────────────── */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        gap: 0;
+      }
+      h1.guide, p.guide, .print-btn, .page-label { display: none !important; }
+
+      .sheet {
+        page-break-after: always;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+
+    @page {
+      size: 111mm 154mm; /* A6 + 3mm bleed each side */
+      margin: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       CARD SHELL (with bleed)
+    ───────────────────────────────────────── */
+    .sheet {
+      width: 111mm;
+      height: 154mm;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      background: #F7F2E9;
+    }
+
+    /* Bleed safe zone indicator — not printed, just visual guide */
+    .bleed-line {
+      position: absolute;
+      border: 0.3px dashed rgba(100,100,100,0.3);
+      top: 3mm; left: 3mm;
+      width: 105mm; height: 148mm;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ─────────────────────────────────────────
+       CORNER ORNAMENTS
+    ───────────────────────────────────────── */
+    .corner {
+      position: absolute;
+      width: 14mm;
+      height: 14mm;
+      z-index: 2;
+    }
+    .corner svg { width: 100%; height: 100%; }
+
+    .corner.tl { top: 5mm; left: 5mm; }
+    .corner.tr { top: 5mm; right: 5mm; transform: scaleX(-1); }
+    .corner.bl { bottom: 5mm; left: 5mm; transform: scaleY(-1); }
+    .corner.br { bottom: 5mm; right: 5mm; transform: scale(-1, -1); }
+
+    /* ─────────────────────────────────────────
+       FRONT FACE
+    ───────────────────────────────────────── */
+    .front {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10mm 8mm 8mm;
+      height: 100%;
+    }
+
+    .logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5mm;
+      margin-top: 2mm;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28pt;
+      font-weight: 600;
+      color: #6B1E2A;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .divider-ornament {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      width: 70mm;
+    }
+    .divider-ornament .line {
+      flex: 1;
+      height: 0.4px;
+      background: #C4A35A;
+    }
+    .divider-ornament .diamond {
+      width: 4px;
+      height: 4px;
+      background: #C4A35A;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .tagline-top {
+      font-size: 6.5pt;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #C4A35A;
+      font-weight: 400;
+      text-align: center;
+    }
+
+    /* QR Section */
+    .qr-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4mm;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .qr-wrapper {
+      width: 52mm;
+      height: 52mm;
+      background: white;
+      border: 1.5px solid #6B1E2A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3mm;
+      position: relative;
+    }
+
+    .qr-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* QR Corner marks */
+    .qr-mark {
+      position: absolute;
+      width: 5mm;
+      height: 5mm;
+      border-color: #C4A35A;
+      border-style: solid;
+    }
+    .qr-mark.tl { top: -1.5px; left: -1.5px; border-width: 1.5px 0 0 1.5px; }
+    .qr-mark.tr { top: -1.5px; right: -1.5px; border-width: 1.5px 1.5px 0 0; }
+    .qr-mark.bl { bottom: -1.5px; left: -1.5px; border-width: 0 0 1.5px 1.5px; }
+    .qr-mark.br { bottom: -1.5px; right: -1.5px; border-width: 0 1.5px 1.5px 0; }
+
+    .scan-instruction {
+      font-size: 7pt;
+      color: #6B1E2A;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Bottom tagline */
+    .bottom-tagline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5mm;
+      padding-bottom: 2mm;
+    }
+
+    .tagline-bottom {
+      font-size: 5.5pt;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #9a7a40;
+      text-align: center;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ─────────────────────────────────────────
+       BACK FACE
+    ───────────────────────────────────────── */
+    .back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10mm 9mm 8mm;
+      height: 100%;
+      gap: 0;
+    }
+
+    .back .brand-name {
+      font-size: 16pt;
+      letter-spacing: 5px;
+    }
+
+    .brand-story {
+      font-family: 'EB Garamond', 'Cormorant Garamond', serif;
+      font-size: 8.5pt;
+      color: #2C2C2C;
+      text-align: center;
+      line-height: 1.75;
+      font-style: italic;
+      padding: 5mm 2mm;
+      flex: 1;
+    }
+
+    .info-grid {
+      width: 100%;
+      display: flex;
+      gap: 3mm;
+      margin-bottom: 3mm;
+    }
+
+    .info-box {
+      border: 0.6px solid #C4A35A;
+      padding: 3mm 3.5mm;
+      flex: 1;
+    }
+
+    .info-box-full {
+      border: 0.6px solid #C4A35A;
+      padding: 3mm 3.5mm;
+      width: 100%;
+      margin-bottom: 3mm;
+    }
+
+    .info-label {
+      font-size: 5pt;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C4A35A;
+      margin-bottom: 2.5mm;
+      font-weight: 600;
+    }
+
+    .info-line {
+      width: 100%;
+      height: 0.4px;
+      background: #d0c8b5;
+      margin: 2.5mm 0;
+    }
+
+    .instagram-row {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .ig-icon {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+
+    .ig-handle {
+      font-size: 7.5pt;
+      color: #6B1E2A;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    .wifi-line {
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      margin-bottom: 1.5mm;
+    }
+
+    .wifi-key {
+      font-size: 5pt;
+      color: #9a7a40;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: 10mm;
+      flex-shrink: 0;
+    }
+
+    .wifi-val {
+      flex: 1;
+      height: 0.4px;
+      background: #d0c8b5;
+    }
+
+    .contact-line {
+      height: 0.4px;
+      background: #d0c8b5;
+      margin: 2mm 0;
+    }
+
+    .back-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2mm;
+      padding-top: 1mm;
+    }
+
+    .back-bottom-text {
+      font-size: 5pt;
+      color: #b09060;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ─────────────────────────────────────────
+       SCREEN ONLY UTILITIES
+    ───────────────────────────────────────── */
+    .print-btn {
+      background: #6B1E2A;
+      color: #F7F2E9;
+      border: none;
+      padding: 12px 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14pt;
+      letter-spacing: 3px;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    .print-btn:hover { background: #4a2530; }
+
+    .page-label {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="guide">KIFLA – QR Menü Kartı</h1>
+  <p class="guide">
+    Baskıya hazır A6 format (105×148mm) • 3mm taşma payı dahil<br>
+    Ctrl+P veya ⌘+P ile tarayıcı baskı diyaloğunu açın → "Ölçeği sığdır" seçin → PDF olarak kaydedin.
+  </p>
+  <button class="print-btn" onclick="window.print()">⬡ Yazdır / PDF Kaydet</button>
+
+  <!-- ══════════════════════════
+       ÖN YÜZ
+  ══════════════════════════ -->
+  <p class="page-label">Ön Yüz</p>
+  <div class="sheet" id="front">
+    <div class="bleed-line"></div>
+
+    <!-- Corner ornaments -->
+    <div class="corner tl">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner tr">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner bl">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner br">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+
+    <div class="front">
+      <!-- Logo -->
+      <div class="logo-section">
+        <div class="brand-name">KIFLA</div>
+        <div class="divider-ornament">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <div class="tagline-top">Artisan Bakery &nbsp;•&nbsp; Coffee &nbsp;•&nbsp; Desserts</div>
+      </div>
+
+      <!-- QR Code -->
+      <div class="qr-section">
+        <div class="qr-wrapper">
+          <!-- Real QR code pointing to the production URL -->
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Fkifla-digital.vercel.app&color=6B1E2A&bgcolor=FFFFFF&ecc=H&margin=0"
+            alt="KIFLA QR Menü Kodu"
+          />
+          <!-- Corner accent marks -->
+          <div class="qr-mark tl"></div>
+          <div class="qr-mark tr"></div>
+          <div class="qr-mark bl"></div>
+          <div class="qr-mark br"></div>
+        </div>
+        <div class="scan-instruction">
+          Menüyü Görüntülemek İçin<br>QR Kodu Taratın
+        </div>
+      </div>
+
+      <!-- Bottom tagline -->
+      <div class="bottom-tagline">
+        <div class="divider-ornament">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <div class="tagline-bottom">
+          Taze Boşnak Lezzetleri &nbsp;•&nbsp; Artisan Kahveler<br>El Yapımı Tatlılar
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       ARKA YÜZ
+  ══════════════════════════ -->
+  <p class="page-label">Arka Yüz</p>
+  <div class="sheet" id="back">
+    <div class="bleed-line"></div>
+
+    <!-- Corner ornaments -->
+    <div class="corner tl">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner tr">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner bl">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+    <div class="corner br">
+      <svg viewBox="0 0 40 40" fill="none">
+        <path d="M2 2 L2 18 M2 2 L18 2" stroke="#C4A35A" stroke-width="1.2"/>
+        <path d="M6 2 Q14 6 14 14" stroke="#C4A35A" stroke-width="0.6" fill="none"/>
+        <circle cx="2" cy="2" r="1.5" fill="#C4A35A"/>
+      </svg>
+    </div>
+
+    <div class="back">
+      <!-- Mini logo -->
+      <div class="logo-section" style="margin-bottom:3mm;">
+        <div class="brand-name" style="font-size:16pt; letter-spacing:5px;">KIFLA</div>
+        <div class="divider-ornament">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <!-- Brand story -->
+      <div class="brand-story">
+        "KIFLA'da her ürün günlük hazırlanır. Geleneksel Boşnak lezzetleri,<br>
+        özel kahveler ve el yapımı tatlılar ile<br>
+        sıcak bir deneyim sunuyoruz."
+      </div>
+
+      <div class="divider-ornament" style="width:60mm; margin-bottom:4mm;">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+
+      <!-- Instagram + WiFi row -->
+      <div class="info-grid">
+        <div class="info-box">
+          <div class="info-label">Sosyal Medya</div>
+          <div class="instagram-row">
+            <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="#6B1E2A" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#6B1E2A" stroke="none"/>
+            </svg>
+            <span class="ig-handle">@kifla</span>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="info-label">WiFi</div>
+          <div class="wifi-line">
+            <span class="wifi-key">Ad:</span>
+            <div class="wifi-val"></div>
+          </div>
+          <div class="wifi-line">
+            <span class="wifi-key">Şifre:</span>
+            <div class="wifi-val"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact box -->
+      <div class="info-box-full">
+        <div class="info-label">İletişim &amp; Adres</div>
+        <div class="contact-line"></div>
+        <div class="contact-line"></div>
+        <div class="contact-line"></div>
+      </div>
+
+      <!-- Back bottom -->
+      <div class="back-bottom">
+        <div class="divider-ornament" style="width:55mm;">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <div class="back-bottom-text">Taze &nbsp;•&nbsp; Günlük &nbsp;•&nbsp; El Yapımı</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="guide" style="margin-top:20px; max-width:500px;">
+    <strong>PDF olarak kaydetmek için:</strong><br>
+    Tarayıcınızda <strong>⌘P</strong> (Mac) veya <strong>Ctrl+P</strong> (Windows) → 
+    Yazıcı olarak <strong>"PDF Olarak Kaydet"</strong> seçin → 
+    Kâğıt boyutunu <strong>A6</strong> veya <strong>Özel (111×154mm)</strong> olarak ayarlayın →
+    Kenar boşlukları: <strong>Yok / None</strong> → Kaydet.
+  </p>
+
+</body>
+</html>

@@ -16,11 +16,12 @@ import imgAmericano              from "@/assets/products/americano.jpg";
 import imgCappuccino             from "@/assets/products/cappuccino.jpg";
 import imgLatte                  from "@/assets/products/latte.jpg";
 import imgFlatWhite              from "@/assets/products/flat-white.jpg";
-import imgMocha                  from "@/assets/products/mocha.jpg";
-import imgMacchiato               from "@/assets/products/macchiato.webp";
+import imgMocha                  from "@/assets/products/mocha-real.jpeg";
+import imgMacchiato               from "@/assets/products/macchiato-real.jpeg";
 import imgFiltreKahve             from "@/assets/products/filtre-kahve.webp";
-import imgTurkKahvesi            from "@/assets/products/turk-kahvesi.webp";
-import imgSicakCikolata          from "@/assets/products/sicak-cikolata.webp";
+import imgTurkKahvesi            from "@/assets/products/turk-kahvesi-real.jpeg";
+import imgSicakCikolata          from "@/assets/products/sicak-cikolata-real.jpeg";
+import imgWhiteMocha             from "@/assets/products/white-mocha.jpeg";
 import imgIcedAmericano          from "@/assets/products/iced-americano.webp";
 import imgIcedLatte             from "@/assets/products/iced-latte.webp";
 import imgIcedCappuccino        from "@/assets/products/iced-cappuccino.webp";
@@ -177,10 +178,11 @@ export const categories: Category[] = [
       { name: "Latte",           price: "160 TL", image: imgLatte,          notes: "Espresso ve bol buharlı süt.",   allergens: "Süt" },
       { name: "Flat White",      price: "160 TL", image: imgFlatWhite,      notes: "Yoğun espresso, az köpük.",     allergens: "Süt" },
       { name: "Mocha",           price: "175 TL", image: imgMocha,          notes: "Espresso, çikolata, buharlı süt.", allergens: "Süt, kakao" },
-      { name: "Macchiato",       price: "140 TL", image: imgMacchiato,    notes: "Espresso üzerine bir miktar köpük.", allergens: "Süt" },
-      { name: "Filtre Kahve",    price: "100 TL", image: imgFiltreKahve,  notes: "Günlük öğütülen specialty çekirdek." },
-      { name: "Türk Kahvesi",    price: "80 TL",  image: imgTurkKahvesi,  notes: "Geleneksel bakır cezve ile pişirilir." },
-      { name: "Sıcak Çikolata",  price: "140 TL", image: imgSicakCikolata, notes: "Belçika çikolatası ile hazırlanır.", allergens: "Süt, kakao" },
+      { name: "White Mocha",     price: "185 TL", image: imgWhiteMocha,     notes: "Espresso, beyaz çikolata, buharlı süt.", allergens: "Süt, kakao" },
+      { name: "Macchiato",       price: "140 TL", image: imgMacchiato,      notes: "Espresso üzerine bir miktar köpük.", allergens: "Süt" },
+      { name: "Filtre Kahve",    price: "100 TL", image: imgFiltreKahve,    notes: "Günlük öğütülen specialty çekirdek." },
+      { name: "Türk Kahvesi",    price: "80 TL",  image: imgTurkKahvesi,    notes: "Geleneksel bakır cezve ile pişirilir." },
+      { name: "Sıcak Çikolata",  price: "140 TL", image: imgSicakCikolata,  notes: "Belçika çikolatası ile hazırlanır.", allergens: "Süt, kakao" },
     ],
   },
   {
