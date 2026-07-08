@@ -368,7 +368,7 @@ export const restaurantConfig = {
   contact: {
     phone: "+905555555555",
     whatsapp: "905555555555",
-    instagram: "thekifla",
+    instagram: "kiflakafe",
   },
   footer: {
     phoneText: "Ara",
