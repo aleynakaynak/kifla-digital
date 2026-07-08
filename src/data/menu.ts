@@ -102,11 +102,14 @@ import icecek     from "@/assets/icecek.jpg";
 import cay        from "@/assets/cay.jpg";
 import meyvesuyu  from "@/assets/meyvesuyu.jpg";
 
-// Kahvalti, tost, serpme images
-// Since there's no pre-existing imports for them in this old version, we'll use placeholder string or omit them at category level, but wait, category image is required in Category type. I will reuse some generic ones for the category headers to avoid compilation errors.
-const kahvaltiTabaklariImage = ekmek;
-const tostlarImage = ekmek;
-const serpmeImage = bosnak;
+import kahvaltiTabaklariImage from "@/assets/kahvalti_tabaklari.png";
+import tostlarImage from "@/assets/tostlar.png";
+import serpmeImage from "@/assets/serpme_kahvalti.png";
+
+import imgKiflaKlasik from "@/assets/products/kiflakaslik.png";
+import imgBalkanTostu from "@/assets/products/balkantostu.png";
+import imgDortPeynirliTost from "@/assets/products/dörtpeynirlitost.png";
+import imgAkdenizTostu from "@/assets/products/akdeniztostu.png";
 
 export const categories: Category[] = [
   {
@@ -185,10 +188,10 @@ export const categories: Category[] = [
     icon: "🥪",
     image: tostlarImage,
     products: [
-      { name: "Kifla Klasik", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir." },
-      { name: "Balkan Tostu", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir." },
-      { name: "Dört Peynirli", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir." },
-      { name: "Akdeniz Tostu", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir." },
+      { name: "Kifla Klasik", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir.", image: imgKiflaKlasik },
+      { name: "Balkan Tostu", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir.", image: imgBalkanTostu },
+      { name: "Dört Peynirli", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir.", image: imgDortPeynirliTost },
+      { name: "Akdeniz Tostu", price: "480 TL", notes: "Yanında söğüş tabağı ile servis edilir.", image: imgAkdenizTostu },
     ],
   },
   {
