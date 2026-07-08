@@ -1,10 +1,11 @@
 import { Phone, Instagram, MessageCircle } from "lucide-react";
-import { contact } from "@/data/menu";
+import { restaurantConfig } from "@/data/menu";
 
 const base =
   "h-12 w-12 rounded-full flex items-center justify-center shadow-[var(--shadow-card)] transition-transform hover:scale-105 active:scale-95";
 
 export function FloatingActions() {
+  const { contact } = restaurantConfig;
   return (
     <div className="fixed right-4 bottom-6 z-40 flex flex-col gap-3">
       <a

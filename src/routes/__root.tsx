@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { restaurantConfig } from "../data/menu";
 
 function NotFoundComponent() {
   return (
@@ -77,20 +78,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "KIFLA · Artisan Bakery, Coffee & Patisserie" },
-      { name: "description", content: "KIFLA premium menü — fırın, kahve ve pastane." },
-      { name: "theme-color", content: "#5c1a2b" },
+      { title: restaurantConfig.seo.title },
+      { name: "description", content: restaurantConfig.seo.description },
+      { name: "theme-color", content: restaurantConfig.seo.themeColor },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
-      { name: "apple-mobile-web-app-title", content: "KIFLA" },
-      { property: "og:title", content: "KIFLA · Artisan Bakery, Coffee & Patisserie" },
-      { property: "og:description", content: "KIFLA premium menü — fırın, kahve ve pastane." },
+      { name: "apple-mobile-web-app-title", content: restaurantConfig.name },
+      { property: "og:title", content: restaurantConfig.seo.title },
+      { property: "og:description", content: restaurantConfig.seo.description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "KIFLA · Artisan Bakery, Coffee & Patisserie" },
-      { name: "twitter:description", content: "KIFLA premium menü — fırın, kahve ve pastane." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6009d8f2-576b-412d-a529-759550be9fca/id-preview-f48f10e4--837f75c4-0901-4b42-bcac-f9ba1da48cba.lovable.app-1780660296857.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6009d8f2-576b-412d-a529-759550be9fca/id-preview-f48f10e4--837f75c4-0901-4b42-bcac-f9ba1da48cba.lovable.app-1780660296857.png" },
+      { name: "twitter:title", content: restaurantConfig.seo.title },
+      { name: "twitter:description", content: restaurantConfig.seo.description },
+      { property: "og:image", content: restaurantConfig.seo.ogImage },
+      { name: "twitter:image", content: restaurantConfig.seo.ogImage },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
