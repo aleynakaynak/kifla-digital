@@ -111,6 +111,10 @@ import imgBalkanTostu from "@/assets/products/balkantostu.png";
 import imgDortPeynirliTost from "@/assets/products/dörtpeynirlitost.png";
 import imgAkdenizTostu from "@/assets/products/akdeniztostu.png";
 
+import imgKlasikKahvalti from "@/assets/products/klasik-kahvalti.jpg.png";
+import imgBalkanKahvaltisi from "@/assets/products/balkan-kahvaltisi.jpg.png";
+import imgSerpmeKahvalti from "@/assets/products/serpme-kahvalti.jpg.png";
+
 export const categories: Category[] = [
   {
     id: "bosnak",
@@ -177,8 +181,8 @@ export const categories: Category[] = [
     icon: "🍳",
     image: kahvaltiTabaklariImage,
     products: [
-      { name: "Klasik Kahvaltı", price: "600 TL" },
-      { name: "Balkan Kahvaltısı", price: "800 TL" },
+      { name: "Klasik Kahvaltı", price: "600 TL", image: imgKlasikKahvalti },
+      { name: "Balkan Kahvaltısı", price: "800 TL", image: imgBalkanKahvaltisi },
     ],
   },
   {
@@ -204,6 +208,7 @@ export const categories: Category[] = [
       { 
         name: "Serpme Kahvaltı", 
         price: "1200 TL",
+        image: imgSerpmeKahvalti,
         notes: "Kişi Başı",
         description: "Lukanka · Balkan sosu · Seçkin peynirler · Ev yapımı reçeller · Bal & kaymak · Taze söğüşler · Günlük börekler · Sıcak kahvaltılıklar · Özel ekmekler · Sınırsız çay" 
       }
