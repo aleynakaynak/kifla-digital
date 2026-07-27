@@ -4,6 +4,10 @@ import imgIspanakliBorekReal     from "@/assets/products/ispanakli-bosnak-boregi
 import imgKiymaliMantiReal       from "@/assets/products/kiymali-bosnak-mantisi-real.jpeg";
 import imgOzbekManti             from "@/assets/products/ozbek-mantisi.jpg";
 
+// ── Ev Yapımı Lezzetler ──────────────────────────────────
+import imgYaprakSarmasi          from "@/assets/products/YaprakSarması.jpeg";
+import imgKarisikKuruDolma       from "@/assets/products/KarışıkKuruDolma.jpeg";
+
 // ── Özel Ekmekler ────────────────────────────────────────
 import imgAvokado                from "@/assets/products/avokado-klasik.jpg";
 import imgHindiFume              from "@/assets/products/hindi-fume-lezzeti.jpg";
@@ -52,7 +56,11 @@ import imgLotusPasta             from "@/assets/products/lotus-pasta.jpeg";
 import imgAcibademPastasi        from "@/assets/products/acibadem-pastasi.jpeg";
 import imgRuloPasta              from "@/assets/products/rulo-pasta.jpeg";
 import imgSaraySarmasi           from "@/assets/products/saray-sarmasi.jpeg";
-import imgParisBrest             from "@/assets/products/paris-brest.avif";
+import imgParisEkler             from "@/assets/products/ParisEkler.png";
+import imgLimonluCheesecake      from "@/assets/products/LimonluCheesecake.jpeg";
+import imgOrmanMeyveliCheesecake from "@/assets/products/OrmanMeyveliCheesecake.png";
+import imgBalliCevizliMarlenka   from "@/assets/products/BallıCevizliDondurmalıMarlenka.jpeg";
+import imgAntepFistikliMarlenka  from "@/assets/products/AntepFıstıklıDondurmalıMarlenka.jpeg";
 
 // ── İçecekler (real product photos) ─────────────────────
 import imgCocaCola               from "@/assets/products/coca-cola.jpeg";
@@ -146,6 +154,27 @@ export const categories: Category[] = [
     ],
   },
   {
+    id: "ev-yapimi",
+    title: "Ev Yapımı Lezzetler",
+    subtitle: "Geleneksel tariflerle hazırlanan ev lezzetleri.",
+    icon: "🏠",
+    image: imgYaprakSarmasi,
+    products: [
+      {
+        name: "Yaprak Sarması",
+        price: "400 TL",
+        notes: "Porsiyon",
+        image: imgYaprakSarmasi,
+      },
+      {
+        name: "Karışık Kuru Dolma",
+        price: "450 TL",
+        notes: "Porsiyon",
+        image: imgKarisikKuruDolma,
+      },
+    ],
+  },
+  {
     id: "ekmek",
     title: "Özel Ekmekler",
     subtitle: "Doğal mayalı, ustaca hazırlanan ekmek sanatı.",
@@ -221,18 +250,18 @@ export const categories: Category[] = [
     icon: "☕",
     image: kahve,
     products: [
-      { name: "Espresso",        price: "130 TL", image: imgEspresso },
-      { name: "Double Espresso", price: "160 TL", image: imgDoubleEspresso },
-      { name: "Americano",       price: "150 TL", image: imgAmericano },
-      { name: "Cappuccino",      price: "200 TL", image: imgCappuccino },
-      { name: "Latte",           price: "200 TL", image: imgLatte },
-      { name: "Flat White",      price: "200 TL", image: imgFlatWhite },
-      { name: "Mocha",           price: "200 TL", image: imgMocha },
-      { name: "White Mocha",     price: "200 TL", image: imgWhiteMocha },
+      { name: "Espresso",        price: "150 TL", image: imgEspresso },
+      { name: "Double Espresso", price: "200 TL", image: imgDoubleEspresso },
+      { name: "Americano",       price: "200 TL", image: imgAmericano },
+      { name: "Cappuccino",      price: "250 TL", image: imgCappuccino },
+      { name: "Latte",           price: "270 TL", image: imgLatte },
+      { name: "Flat White",      price: "270 TL", image: imgFlatWhite },
+      { name: "Mocha",           price: "300 TL", image: imgMocha },
+      { name: "White Mocha",     price: "300 TL", image: imgWhiteMocha },
       { name: "Macchiato",       price: "200 TL", image: imgMacchiato },
-      { name: "Türk Kahvesi",    price: "150 TL", image: imgTurkKahvesi },
-      { name: "Filtre Kahve",    price: "140 TL", image: imgFiltreKahve },
-      { name: "Sıcak Çikolata",  price: "200 TL", image: imgSicakCikolata },
+      { name: "Türk Kahvesi",    price: "200 TL", image: imgTurkKahvesi },
+      { name: "Filtre Kahve",    price: "200 TL", image: imgFiltreKahve },
+      { name: "Sıcak Çikolata",  price: "350 TL", image: imgSicakCikolata },
     ],
   },
   {
@@ -242,15 +271,15 @@ export const categories: Category[] = [
     icon: "🧊",
     image: sogukKahve,
     products: [
-      { name: "Iced Americano",  price: "170 TL", image: imgIcedAmericano },
-      { name: "Iced Latte",      price: "200 TL", image: imgIcedLatte },
-      { name: "Iced Cappuccino", price: "200 TL", image: imgIcedCappuccino },
-      { name: "Iced Mocha",      price: "220 TL", image: imgIcedMocha },
-      { name: "Cold Brew",       price: "200 TL", image: imgColdBrew },
-      { name: "Iced Flat White", price: "200 TL", image: imgIcedFlatWhite },
+      { name: "Iced Americano",  price: "200 TL", image: imgIcedAmericano },
+      { name: "Iced Latte",      price: "270 TL", image: imgIcedLatte },
+      { name: "Iced Cappuccino", price: "250 TL", image: imgIcedCappuccino },
+      { name: "Iced Mocha",      price: "320 TL", image: imgIcedMocha },
+      { name: "Cold Brew",       price: "280 TL", image: imgColdBrew },
+      { name: "Iced Flat White", price: "270 TL", image: imgIcedFlatWhite },
       { name: "Affogato",        price: "320 TL", image: imgAffogato },
-      { name: "Frappe",          price: "250 TL", image: imgFrappe },
-      { name: "Ice Coffee",      price: "200 TL", image: imgIceCoffee },
+      { name: "Frappe",          price: "300 TL", image: imgFrappe },
+      { name: "Ice Coffee",      price: "250 TL", image: imgIceCoffee },
     ],
   },
   {
@@ -267,8 +296,12 @@ export const categories: Category[] = [
       { name: "Rulo Pasta",               price: "400 TL", image: imgRuloPasta },
       { name: "Saray Sarması",            price: "300 TL", image: imgSaraySarmasi },
       { name: "Çilekli Parfe",            price: "480 TL", image: imgCilekliParfe },
-      { name: "Paris Brest",              price: "350 TL", image: imgParisBrest },
+      { name: "Paris Ekler (3 Adet)",     price: "350 TL", image: imgParisEkler },
       { name: "Şeftalili Coca",           price: "550 TL", image: imgSeftaliliCoca },
+      { name: "Limonlu Cheesecake",                 price: "480 TL", image: imgLimonluCheesecake },
+      { name: "Orman Meyveli Cheesecake",           price: "480 TL", image: imgOrmanMeyveliCheesecake },
+      { name: "Ballı Cevizli Dondurmalı Marlenka",  price: "520 TL", image: imgBalliCevizliMarlenka },
+      { name: "Antep Fıstıklı Dondurmalı Marlenka", price: "520 TL", image: imgAntepFistikliMarlenka },
     ],
   },
   {
@@ -278,12 +311,12 @@ export const categories: Category[] = [
     icon: "🍵",
     image: cay,
     products: [
-      { name: "Ihlamur Çayı",        price: "250 TL", image: imgIhlamurCayi },
-      { name: "Papatya Çayı",        price: "250 TL", image: imgPapatyaCayi },
-      { name: "Sultan Çayı",         price: "360 TL", image: imgSultanCayi },
-      { name: "Yeşil Çay",           price: "250 TL", image: imgYesilCay },
-      { name: "Siyah Çay",           price: "50 TL",  image: imgSiyahCay },
-      { name: "Safranlı Mango Çayı", price: "250 TL", image: imgSafranliMangoCayi },
+      { name: "Ihlamur Çayı",        price: "350 TL", image: imgIhlamurCayi },
+      { name: "Papatya Çayı",        price: "350 TL", image: imgPapatyaCayi },
+      { name: "Sultan Çayı",         price: "400 TL", image: imgSultanCayi },
+      { name: "Yeşil Çay",           price: "350 TL", image: imgYesilCay },
+      { name: "Siyah Çay",           price: "80 TL",  image: imgSiyahCay },
+      { name: "Safranlı Mango Çayı", price: "400 TL", image: imgSafranliMangoCayi },
     ],
   },
   {
@@ -293,31 +326,31 @@ export const categories: Category[] = [
     icon: "🍹",
     image: icecek,
     products: [
-      { name: "Coca Cola",                 price: "125 TL", image: imgCocaCola },
+      { name: "Coca-Cola",                 price: "150 TL", image: imgCocaCola },
       { name: "Boza",                      price: "120 TL", image: imgBoza },
-      { name: "Lipton Ice Tea Şeftali",    price: "125 TL", image: imgLiptonSeftali },
-      { name: "Lipton Ice Tea Limon",      price: "125 TL", image: imgLiptonLimon },
-      { name: "San Pellegrino",            price: "125 TL", image: imgSanPellegrino },
-      { name: "Beypazarı Maden Suyu",      price: "60 TL",  image: imgBeypazari },
-      { name: "Erikli Su",                 price: "25 TL",  image: imgErikliSu },
-      { name: "Beyoğlu Gazozu",            price: "70 TL",  image: imgBeyogluGazozu },
+      { name: "Lipton Ice Tea Şeftali",    price: "150 TL", image: imgLiptonSeftali },
+      { name: "Lipton Ice Tea Limon",      price: "150 TL", image: imgLiptonLimon },
+      { name: "San Pellegrino",            price: "160 TL", image: imgSanPellegrino },
+      { name: "Beypazarı Maden Suyu",      price: "90 TL",  image: imgBeypazari },
+      { name: "Erikli Su",                 price: "35 TL",  image: imgErikliSu },
+      { name: "Beyoğlu Gazozu",            price: "100 TL", image: imgBeyogluGazozu },
     ],
   },
   {
     id: "dondurma",
     title: "Dondurmalar",
-    subtitle: "Her top 70 TL · El yapımı, taze süt ile",
+    subtitle: "Diğer çeşitlerde her top 80 TL · Antep Fıstıklı 150 TL",
     icon: "🍨",
     image: dondurma,
     products: [
-      { name: "Vanilya",         price: "70 TL" },
-      { name: "Çikolata",        price: "70 TL" },
-      { name: "Çilekli",         price: "70 TL" },
-      { name: "Antep Fıstıklı",  price: "70 TL" },
-      { name: "Bal Bademli",     price: "70 TL" },
-      { name: "Karamel",         price: "70 TL" },
-      { name: "Limon",           price: "70 TL" },
-      { name: "Orman Meyveli",   price: "70 TL" },
+      { name: "Vanilya",         price: "80 TL" },
+      { name: "Çikolata",        price: "80 TL" },
+      { name: "Çilekli",         price: "80 TL" },
+      { name: "Bal Bademli",     price: "80 TL" },
+      { name: "Karamel",         price: "80 TL" },
+      { name: "Limon",           price: "80 TL" },
+      { name: "Orman Meyveli",   price: "80 TL" },
+      { name: "Antep Fıstıklı",  price: "150 TL" },
     ],
   },
   {
@@ -327,9 +360,9 @@ export const categories: Category[] = [
     icon: "🍋",
     image: limonata,
     products: [
-      { name: "Klasik Limonata", price: "350 TL", image: imgLimonataTaze },
-      { name: "Çilek Bahçesi",   price: "350 TL", image: imgLimonataCilekBahcesi },
-      { name: "Mango Esintisi",  price: "350 TL", image: imgLimonataMangoEsintisi },
+      { name: "Klasik Limonata", price: "400 TL", image: imgLimonataTaze },
+      { name: "Çilek Bahçesi",   price: "400 TL", image: imgLimonataCilekBahcesi },
+      { name: "Mango Esintisi",  price: "400 TL", image: imgLimonataMangoEsintisi },
     ],
   },
   {
@@ -339,9 +372,9 @@ export const categories: Category[] = [
     icon: "🍊",
     image: meyvesuyu,
     products: [
-      { name: "Havuç Elma Suyu", price: "350 TL", image: imgHavucElmaSuyu },
-      { name: "Portakal Suyu",   price: "350 TL", image: imgPortakalSuyu },
-      { name: "Naneli Karpuz Suyu", price: "350 TL", image: imgTazeMeyveSuyu },
+      { name: "Havuç Elma Suyu", price: "420 TL", image: imgHavucElmaSuyu },
+      { name: "Portakal Suyu",   price: "420 TL", image: imgPortakalSuyu },
+      { name: "Naneli Karpuz Suyu", price: "500 TL", image: imgTazeMeyveSuyu },
     ],
   },
 ];

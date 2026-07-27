@@ -228,7 +228,7 @@ function Home() {
             <p className="mt-6 text-xs text-muted-foreground">
               © {new Date().getFullYear()} KIFLA. Tüm hakları saklıdır.
               <br />
-              <span className="opacity-50">KIFLA MENU VERSION: 2026-07-08-PDF-PRICE-UPDATE</span>
+              <span className="opacity-50">KIFLA MENU VERSION: 2026-07-27-FULL-MENU-UPDATE</span>
             </p>
           </footer>
         </div>
