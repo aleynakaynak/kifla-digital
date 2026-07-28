@@ -155,7 +155,7 @@ export const categories: Category[] = [
     products: [
       {
         name: "Yaprak Sarması",
-        price: "450 TL",
+        price: "400 TL",
         notes: "Porsiyon",
         description: "Özel iç harçla hazırlanan yaprak sarma, sarımsaklı yoğurt ve tereyağlı sos eşliğinde.",
         image: imgYaprakSarmasi,
