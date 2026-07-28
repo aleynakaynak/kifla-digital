@@ -23,9 +23,6 @@ import imgLatte                  from "@/assets/products/latte.jpg";
 import imgFlatWhite              from "@/assets/products/flat-white.jpg";
 import imgMocha                  from "@/assets/products/mocha-real.jpeg";
 import imgMacchiato              from "@/assets/products/macchiato-real.jpeg";
-import imgFiltreKahve            from "@/assets/products/filtre-kahve.webp";
-import imgTurkKahvesi            from "@/assets/products/turk-kahvesi-real.jpeg";
-import imgSicakCikolata          from "@/assets/products/sicak-cikolata-real.jpeg";
 import imgWhiteMocha             from "@/assets/products/white-mocha.jpeg";
 
 // ── Soğuk Kahveler ───────────────────────────────────────
@@ -44,21 +41,12 @@ import imgIhlamurCayi            from "@/assets/products/ihlamur-cayi.webp";
 import imgPapatyaCayi            from "@/assets/products/papatya-cayi.webp";
 import imgYesilCay               from "@/assets/products/yesil-cay.webp";
 import imgSiyahCay               from "@/assets/products/siyah-cay.webp";
-import imgSultanCayi             from "@/assets/products/sultan-cayi.jpg";
+import imgSultanCayi             from "@/assets/products/ChatGPT Image 27 Tem 2026 19_12_54.png";
 import imgSafranliMangoCayi      from "@/assets/products/safranli-mango-cayi.jpg";
 
 // ── Pastalar (real KIFLA photos) ─────────────────────────
-import imgCikolatalıPasta        from "@/assets/products/cikolatali-pasta.jpeg";
-import imgSeftaliliCoca          from "@/assets/products/seftalili-coca.jpeg";
-import imgMeyveliCikolataliPasta from "@/assets/products/meyveli-cikolatali-pasta.jpeg";
-import imgCilekliParfe           from "@/assets/products/cilekli-parfe.jpeg";
-import imgLotusPasta             from "@/assets/products/lotus-pasta.jpeg";
-import imgAcibademPastasi        from "@/assets/products/acibadem-pastasi.jpeg";
-import imgRuloPasta              from "@/assets/products/rulo-pasta.jpeg";
-import imgSaraySarmasi           from "@/assets/products/saray-sarmasi.jpeg";
-import imgParisEkler             from "@/assets/products/ParisEkler.png";
-import imgLimonluCheesecake      from "@/assets/products/LimonluCheesecake.jpeg";
-import imgOrmanMeyveliCheesecake from "@/assets/products/OrmanMeyveliCheesecake.png";
+import imgAcibademPastasi        from "@/assets/products/cilekli-parfe.jpeg";
+import imgParisBrest             from "@/assets/products/paris-brest.avif";
 import imgBalliCevizliMarlenka   from "@/assets/products/BallıCevizliDondurmalıMarlenka.jpeg";
 import imgAntepFistikliMarlenka  from "@/assets/products/AntepFıstıklıDondurmalıMarlenka.jpeg";
 
@@ -71,14 +59,6 @@ import imgBeypazari              from "@/assets/products/beypazari-maden-suyu.jp
 import imgSanPellegrino          from "@/assets/products/san-pellegrino.jpeg";
 import imgBoza                   from "@/assets/products/boza.jpeg";
 import imgBeyogluGazozu          from "@/assets/products/beyoglu-gazozu.jpeg";
-
-// ── Limonata ve Meyve Suyu ──────────────────────────────
-import imgLimonataCilekBahcesi   from "@/assets/products/limonata-cilek-bahcesi.jpg";
-import imgLimonataMangoEsintisi  from "@/assets/products/limonata-mango-esintisi.jpg";
-import imgLimonataTaze           from "@/assets/products/limonata-taze.jpg";
-import imgHavucElmaSuyu          from "@/assets/products/havuc-elma-suyu.jpg";
-import imgPortakalSuyu           from "@/assets/products/portakal-suyu.jpg";
-import imgTazeMeyveSuyu          from "@/assets/products/taze-meyve-suyu.jpg";
 
 export type Product = {
   name: string;
@@ -104,7 +84,6 @@ import ekmek      from "@/assets/ekmek.jpg";
 import kahve      from "@/assets/kahve.jpg";
 import sogukKahve from "@/assets/soguk-kahve.jpg";
 import pasta      from "@/assets/pasta.jpg";
-import dondurma   from "@/assets/dondurma.jpg";
 import limonata   from "@/assets/limonata.jpg";
 import icecek     from "@/assets/icecek.jpg";
 import cay        from "@/assets/cay.jpg";
@@ -119,9 +98,23 @@ import imgBalkanTostu from "@/assets/products/balkantostu.png";
 import imgDortPeynirliTost from "@/assets/products/dörtpeynirlitost.png";
 import imgAkdenizTostu from "@/assets/products/akdeniztostu.png";
 
-import imgKlasikKahvalti from "@/assets/products/klasik-kahvalti.jpg.png";
-import imgBalkanKahvaltisi from "@/assets/products/balkan-kahvaltisi.jpg.png";
-import imgSerpmeKahvalti from "@/assets/products/serpme-kahvalti.jpg.png";
+import imgSerpmeKahvalti from "@/assets/products/ChatGPT Image 27 Tem 2026 18_02_33.png";
+
+// ── Yeni AI görselleri (2026-07-27/28) ───────────────────
+import imgKlasikKahvaltiNew  from "@/assets/products/ChatGPT Image 27 Tem 2026 17_53_24.png";
+import imgBalkanKahvaltisiNew from "@/assets/products/ChatGPT Image 27 Tem 2026 17_56_37.png";
+import imgSicakCikolataNew   from "@/assets/products/ChatGPT Image 27 Tem 2026 18_05_51 (1).png";
+import imgFiltreKahveNew     from "@/assets/products/ChatGPT Image 27 Tem 2026 18_13_48.png";
+import imgTurkKahvesiNew     from "@/assets/products/ChatGPT Image 27 Tem 2026 18_16_48.png";
+import imgKlasikLimonataNew  from "@/assets/products/ChatGPT Image 27 Tem 2026 18_24_39.png";
+import imgCilekBahcesiNew    from "@/assets/products/ChatGPT Image 27 Tem 2026 18_37_09.png";
+import imgMangoEsintisiNew   from "@/assets/products/ChatGPT Image 27 Tem 2026 18_45_08 (1).png";
+import imgHavucElmaSuyuNew   from "@/assets/products/ChatGPT Image 27 Tem 2026 18_49_37.png";
+import imgPortakalSuyuNew    from "@/assets/products/ChatGPT Image 27 Tem 2026 18_51_39.png";
+import imgKarpuzSuyuNew      from "@/assets/products/ChatGPT Image 27 Tem 2026 18_54_21.png";
+import imgDondurmaVitrinNew  from "@/assets/products/ChatGPT Image 27 Tem 2026 19_09_11.png";
+import imgLimonluCheesecakeNew      from "@/assets/products/ChatGPT Image 28 Tem 2026 10_03_17.png";
+import imgOrmanMeyveliCheesecakeNew from "@/assets/products/ChatGPT Image 28 Tem 2026 10_04_45.png";
 
 export const categories: Category[] = [
   {
@@ -162,14 +155,16 @@ export const categories: Category[] = [
     products: [
       {
         name: "Yaprak Sarması",
-        price: "400 TL",
+        price: "450 TL",
         notes: "Porsiyon",
+        description: "Özel iç harçla hazırlanan yaprak sarma, sarımsaklı yoğurt ve tereyağlı sos eşliğinde.",
         image: imgYaprakSarmasi,
       },
       {
-        name: "Karışık Kuru Dolma",
+        name: "Kuru Patlıcan Dolması",
         price: "450 TL",
         notes: "Porsiyon",
+        description: "Geleneksel baharatlı iç harçla doldurulan kuru patlıcan, yoğurt eşliğinde.",
         image: imgKarisikKuruDolma,
       },
     ],
@@ -210,8 +205,8 @@ export const categories: Category[] = [
     icon: "🍳",
     image: kahvaltiTabaklariImage,
     products: [
-      { name: "Klasik Kahvaltı", price: "600 TL", image: imgKlasikKahvalti },
-      { name: "Balkan Kahvaltısı", price: "800 TL", image: imgBalkanKahvaltisi },
+      { name: "Klasik Kahvaltı", price: "600 TL", image: imgKlasikKahvaltiNew },
+      { name: "Balkan Kahvaltısı", price: "800 TL", image: imgBalkanKahvaltisiNew },
     ],
   },
   {
@@ -259,9 +254,9 @@ export const categories: Category[] = [
       { name: "Mocha",           price: "300 TL", image: imgMocha },
       { name: "White Mocha",     price: "300 TL", image: imgWhiteMocha },
       { name: "Macchiato",       price: "200 TL", image: imgMacchiato },
-      { name: "Türk Kahvesi",    price: "200 TL", image: imgTurkKahvesi },
-      { name: "Filtre Kahve",    price: "200 TL", image: imgFiltreKahve },
-      { name: "Sıcak Çikolata",  price: "350 TL", image: imgSicakCikolata },
+      { name: "Türk Kahvesi",    price: "200 TL", image: imgTurkKahvesiNew },
+      { name: "Filtre Kahve",    price: "200 TL", image: imgFiltreKahveNew },
+      { name: "Sıcak Çikolata",  price: "350 TL", image: imgSicakCikolataNew },
     ],
   },
   {
@@ -289,19 +284,12 @@ export const categories: Category[] = [
     icon: "🍰",
     image: pasta,
     products: [
-      { name: "Meyveli Çikolatalı Pasta", price: "480 TL", image: imgMeyveliCikolataliPasta },
-      { name: "Çikolatalı Pasta",         price: "480 TL", image: imgCikolatalıPasta },
-      { name: "Lotus Pasta",              price: "480 TL", image: imgLotusPasta },
       { name: "Acıbadem Pastası",         price: "480 TL", image: imgAcibademPastasi },
-      { name: "Rulo Pasta",               price: "400 TL", image: imgRuloPasta },
-      { name: "Saray Sarması",            price: "300 TL", image: imgSaraySarmasi },
-      { name: "Çilekli Parfe",            price: "480 TL", image: imgCilekliParfe },
-      { name: "Paris Ekler (3 Adet)",     price: "350 TL", image: imgParisEkler },
-      { name: "Şeftalili Coca",           price: "550 TL", image: imgSeftaliliCoca },
-      { name: "Limonlu Cheesecake",                 price: "480 TL", image: imgLimonluCheesecake },
-      { name: "Orman Meyveli Cheesecake",           price: "480 TL", image: imgOrmanMeyveliCheesecake },
+      { name: "Paris Brest",              price: "350 TL", image: imgParisBrest },
       { name: "Ballı Cevizli Dondurmalı Marlenka",  price: "520 TL", image: imgBalliCevizliMarlenka },
       { name: "Antep Fıstıklı Dondurmalı Marlenka", price: "520 TL", image: imgAntepFistikliMarlenka },
+      { name: "Limonlu Cheesecake",                 price: "480 TL", image: imgLimonluCheesecakeNew },
+      { name: "Orman Meyveli Cheesecake",           price: "480 TL", image: imgOrmanMeyveliCheesecakeNew },
     ],
   },
   {
@@ -311,12 +299,12 @@ export const categories: Category[] = [
     icon: "🍵",
     image: cay,
     products: [
+      { name: "Sultan Çayı",         price: "400 TL", image: imgSultanCayi },
       { name: "Ihlamur Çayı",        price: "350 TL", image: imgIhlamurCayi },
       { name: "Papatya Çayı",        price: "350 TL", image: imgPapatyaCayi },
-      { name: "Sultan Çayı",         price: "400 TL", image: imgSultanCayi },
       { name: "Yeşil Çay",           price: "350 TL", image: imgYesilCay },
-      { name: "Siyah Çay",           price: "80 TL",  image: imgSiyahCay },
       { name: "Safranlı Mango Çayı", price: "400 TL", image: imgSafranliMangoCayi },
+      { name: "Siyah Çay",           price: "80 TL",  image: imgSiyahCay },
     ],
   },
   {
@@ -341,7 +329,7 @@ export const categories: Category[] = [
     title: "Dondurmalar",
     subtitle: "Diğer çeşitlerde her top 80 TL · Antep Fıstıklı 150 TL",
     icon: "🍨",
-    image: dondurma,
+    image: imgDondurmaVitrinNew,
     products: [
       { name: "Vanilya",         price: "80 TL" },
       { name: "Çikolata",        price: "80 TL" },
@@ -360,9 +348,9 @@ export const categories: Category[] = [
     icon: "🍋",
     image: limonata,
     products: [
-      { name: "Klasik Limonata", price: "400 TL", image: imgLimonataTaze },
-      { name: "Çilek Bahçesi",   price: "400 TL", image: imgLimonataCilekBahcesi },
-      { name: "Mango Esintisi",  price: "400 TL", image: imgLimonataMangoEsintisi },
+      { name: "Klasik Limonata", price: "400 TL", image: imgKlasikLimonataNew },
+      { name: "Çilek Bahçesi",   price: "400 TL", image: imgCilekBahcesiNew },
+      { name: "Mango Esintisi",  price: "400 TL", image: imgMangoEsintisiNew },
     ],
   },
   {
@@ -372,9 +360,9 @@ export const categories: Category[] = [
     icon: "🍊",
     image: meyvesuyu,
     products: [
-      { name: "Havuç Elma Suyu", price: "420 TL", image: imgHavucElmaSuyu },
-      { name: "Portakal Suyu",   price: "420 TL", image: imgPortakalSuyu },
-      { name: "Naneli Karpuz Suyu", price: "500 TL", image: imgTazeMeyveSuyu },
+      { name: "Havuç Elma Suyu", price: "420 TL", image: imgHavucElmaSuyuNew },
+      { name: "Portakal Suyu",   price: "420 TL", image: imgPortakalSuyuNew },
+      { name: "Naneli Karpuz Suyu", price: "500 TL", image: imgKarpuzSuyuNew },
     ],
   },
 ];
